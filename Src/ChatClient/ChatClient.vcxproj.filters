@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="protocol_src">
+      <UniqueIdentifier>{995c6229-33a0-444a-9d27-38e05a86c5c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="chatcore">
+      <UniqueIdentifier>{b024e4a8-1669-4668-ab1d-7fe6dedb2794}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="..\ChatCore\chating.cpp">
+      <Filter>chatcore</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ChatCore\chatingData.cpp">
+      <Filter>chatcore</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Protocol\Src\chatAsc_Protocol.cpp">
+      <Filter>protocol_src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Protocol\Src\chatAsc_ProtocolHandler.cpp">
+      <Filter>protocol_src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Protocol\Src\chatBin_Protocol.cpp">
+      <Filter>protocol_src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Protocol\Src\chatBin_ProtocolHandler.cpp">
+      <Filter>protocol_src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="..\ChatCore\chating.h">
+      <Filter>chatcore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ChatCore\chatingData.h">
+      <Filter>chatcore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Protocol\Src\chatAsc_Protocol.h">
+      <Filter>protocol_src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Protocol\Src\chatAsc_ProtocolData.h">
+      <Filter>protocol_src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Protocol\Src\chatAsc_ProtocolHandler.h">
+      <Filter>protocol_src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Protocol\Src\chatBin_Protocol.h">
+      <Filter>protocol_src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Protocol\Src\chatBin_ProtocolData.h">
+      <Filter>protocol_src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Protocol\Src\chatBin_ProtocolHandler.h">
+      <Filter>protocol_src</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

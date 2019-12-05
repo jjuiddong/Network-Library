@@ -1,0 +1,28 @@
+
+protocol asc 100
+{
+	AckLogin(  );
+	ReqLogin( string name );
+	ReqLogout( string name );
+
+	// SEND : 1145980243
+	{ packetid : 1145980243 }
+	chat( std::string data );
+
+	// CHAT : 1413564483
+	{ packetid : 1413564483 }
+	chatstruct( sChatStruct sChat );
+
+	// NOTC : 1313821763
+	{ packetid : 1313821763 }
+	notice( std::string name );
+
+	// BRDC : 1128550978
+	{ packetid : 1128550978 }
+	broadcasting( std::string name, std::string data );
+
+	// BRDC : 1396986434
+	{ packetid : 1396986434 }
+	broadcastingStruct( std::string name, sChatStruct sChat );
+}
+

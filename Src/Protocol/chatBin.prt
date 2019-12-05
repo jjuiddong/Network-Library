@@ -1,0 +1,19 @@
+
+
+protocol s2c 200
+{
+	AckLogin(  );
+	notice( std::string name );
+	broadcasting( std::string name, std::string data );
+	broadcastingStruct( std::string name, sChatStruct chat );
+}
+
+
+protocol c2s 300
+{
+	ReqLogin( string id );
+	ReqLogout( string id );
+	chat( std::string data );
+	chatStruct( sChatStruct chat );
+}
+

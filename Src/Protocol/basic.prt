@@ -1,0 +1,24 @@
+
+
+protocol s2c 200
+{
+	AckLogin( string id );
+	ReqWork( int num );
+
+	func1( );
+	func2( std::string str );
+	func3( float value );
+	func4( );	
+}
+
+
+protocol c2s 300
+{
+	ReqLogin( string id );
+	AckWork( int result );
+
+	Work(int workId, int status, int statusValue, vector<int> path, string name);
+
+	func5( std::string str );
+	func6( float value );
+}
