@@ -3,6 +3,8 @@ Network Library with VS2017 C++, WinSock
 
 - TCP, UDP/IP Network Library using C++
 - Protocol Generator
-  - Automation Send/Recv Packet Parser and Maker C++ Code
+  - Automate Generation C++ Code for Send/Recv Packet Parser and Maker
+- Automate Call Packe Receive Function
+  - inherit packet handler inteface
+  - using realtime type information, call packet function
   
- 
