@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="..\Protocol\Src\basic_Protocol.h">
+      <Filter>protocol_src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Protocol\Src\basic_ProtocolData.h">
+      <Filter>protocol_src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Protocol\Src\basic_ProtocolHandler.h">
+      <Filter>protocol_src</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="..\Protocol\Src\basic_Protocol.cpp">
+      <Filter>protocol_src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Protocol\Src\basic_ProtocolHandler.cpp">
+      <Filter>protocol_src</Filter>
+    </ClCompile>
+    <ClCompile Include="TcpTransactionClient.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="protocol_src">
+      <UniqueIdentifier>{2d395a34-6164-4f76-a0e0-70625d4c7b2f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

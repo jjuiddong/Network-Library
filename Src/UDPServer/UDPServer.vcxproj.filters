@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <ClCompile Include="TestUdpServer.cpp" />
     <ClCompile Include="pch.cpp" />
-    <ClCompile Include="TestTcpClient.cpp" />
     <ClCompile Include="..\Protocol\Src\basic_Protocol.cpp">
       <Filter>protocol_src</Filter>
     </ClCompile>
@@ -23,16 +23,16 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="protocol">
-      <UniqueIdentifier>{0cf442fa-020a-444a-99f2-fe82dfa42dc3}</UniqueIdentifier>
-    </Filter>
     <Filter Include="protocol_src">
-      <UniqueIdentifier>{e59902c0-f755-41d6-a3e2-634b8dddefbb}</UniqueIdentifier>
+      <UniqueIdentifier>{2e078d25-ad81-4d09-aa26-19e9e1d6245c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="protocol">
+      <UniqueIdentifier>{e2e2d09b-7b74-4c2a-a8a5-748343db52a0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\Protocol\basic.prt">
+    <CustomBuild Include="..\Protocol\basic.prt">
       <Filter>protocol</Filter>
-    </None>
+    </CustomBuild>
   </ItemGroup>
 </Project>

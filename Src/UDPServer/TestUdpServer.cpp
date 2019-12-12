@@ -1,8 +1,8 @@
 //
-// 2019-12-05, jjuiddong
-// tcp/ip server sample
+// 2019-12-12, jjuiddong
+// udp/ip server sample
+//	udp server is only receive module
 //
-
 #include "pch.h"
 #include "../Protocol/Src/basic_Protocol.h"
 #include "../Protocol/Src/basic_ProtocolData.h"
@@ -10,7 +10,6 @@
 
 using namespace std;
 bool g_isLoop = true;
-basic::s2c_Protocol g_protocol;
 bool g_print = false;
 
 class cPacketHandler : public basic::c2s_ProtocolHandler
@@ -19,14 +18,14 @@ public:
 	cPacketHandler() {}
 	virtual ~cPacketHandler() {}
 
-	virtual bool ReqLogin(basic::ReqLogin_Packet &packet) 
-	{ 
-		g_protocol.AckLogin(packet.senderId, packet.id);
-		return true; 
+	virtual bool ReqLogin(basic::ReqLogin_Packet &packet)
+	{
+		cout << "ReqLogin " << endl;
+		return true;
 	}
 
-	virtual bool Work(basic::Work_Packet &packet) 
-	{ 
+	virtual bool Work(basic::Work_Packet &packet)
+	{
 		if (g_print)
 		{
 			cout << "Work" << endl;
@@ -41,31 +40,28 @@ public:
 			cout << packet.name << endl;
 		}
 
-		return true; 
+		return true;
 	}
 
 	virtual bool AckWork(basic::AckWork_Packet &packet)
 	{
 		if (g_print)
 			cout << "ReqLoading " << packet.result << "\n";
-		return true; 	
+		return true;
 	}
 
-	virtual bool func5(basic::func5_Packet &packet) 
-	{ 
+	virtual bool func5(basic::func5_Packet &packet)
+	{
 		if (g_print)
 			cout << "recv basic::func5_Packet - " << packet.str << endl;
-		return true; 
+		return true;
 	}
-	
-	virtual bool func6(basic::func6_Packet &packet) 
-	{ 
+
+	virtual bool func6(basic::func6_Packet &packet)
+	{
 		if (g_print)
 			cout << "recv basic::func6_Packet - " << packet.value << endl;
-
-		g_protocol.func4(packet.senderId);
-
-		return true; 
+		return true;
 	}
 };
 
@@ -94,14 +90,12 @@ int main(const int argc, const char *argv[])
 	}
 
 	network2::cNetController netController;
-	network2::cTcpServer server;
+	network2::cUdpServer server;
 	cPacketHandler handler;
 
 	server.AddProtocolHandler(&handler);
-	server.RegisterProtocol(&g_protocol);
 
-	if (!netController.StartTcpServer(&server, port, network2::DEFAULT_PACKETSIZE
-		, 1024, 1))
+	if (!netController.StartUdpServer(&server, port, network2::DEFAULT_PACKETSIZE, 1024, 1))
 	{
 		cout << "Error Server Bind" << endl;
 	}
@@ -122,8 +116,6 @@ int main(const int argc, const char *argv[])
 			procPacketCnt = 0;
 			oldT = curT;
 		}
-
-		Sleep(1);
 	}
 
 	netController.Clear();

@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -19,36 +19,36 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <VCProjectVersion>14.0</VCProjectVersion>
-    <ProjectGuid>{D49CA96F-0F57-4D36-B0C2-A1A369462627}</ProjectGuid>
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{2EE2716A-D55E-4800-9512-479C13A8C616}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>TestServer</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <RootNamespace>TransactionClient</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -72,18 +72,24 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)..\..\Package\</OutDir>
     <TargetName>$(ProjectName)d</TargetName>
+    <IntDir>$(SolutionDir)/Obj/$(ProjectName)/$(Configuration)/</IntDir>
+    <OutDir>$(SolutionDir)../Package/</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <IntDir>$(SolutionDir)../Obj/$(ProjectName)/$(Configuration)/</IntDir>
+    <OutDir>$(SolutionDir)../../Package/</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SolutionDir)..\..\Package\</OutDir>
+    <IntDir>$(SolutionDir)/Obj/$(ProjectName)/$(Configuration)/</IntDir>
+    <OutDir>$(SolutionDir)../Package/</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
+    <IntDir>$(SolutionDir)../Obj/$(ProjectName)/$(Configuration)/</IntDir>
+    <OutDir>$(SolutionDir)../../Package/</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -91,7 +97,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_HAS_ITERATOR_DEBUGGING=0;_ITERATOR_DEBUG_LEVEL=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
@@ -108,7 +114,6 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -144,7 +149,6 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -168,24 +172,13 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="TestTcpServer.cpp" />
+    <ClCompile Include="TcpTransactionClient.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="..\Protocol\basic.prt">
-      <FileType>Document</FileType>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\..\Package\ProtocolGenerator.exe -s %(FullPath) -p pch.h -m marshalling</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Filename) protocol Generation...</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(RelativeDir)\Src\%(Filename)_Protocol.h;%(RelativeDir)\Src\%(Filename)_Protocol.cpp;%(RelativeDir)\Src\%(Filename)_ProtocolData.h;%(RelativeDir)\Src\%(Filename)_ProtocolHandler.h;%(RelativeDir)\Src\%(Filename)_ProtocolHandler.cpp</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\Package\ProtocolGenerator.exe -s %(FullPath) -p pch.h -m marshalling</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Filename) protocol Generation...</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(RelativeDir)\Src\%(Filename)_Protocol.h;%(RelativeDir)\Src\%(Filename)_Protocol.cpp;%(RelativeDir)\Src\%(Filename)_ProtocolData.h;%(RelativeDir)\Src\%(Filename)_ProtocolHandler.h;%(RelativeDir)\Src\%(Filename)_ProtocolHandler.cpp</Outputs>
-    </CustomBuild>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\NetCommon\NetCommon-VS2015.vcxproj">
+    <ProjectReference Include="..\..\..\Common\Common\Common.vcxproj">
       <Project>{ef9ca22d-0c8f-42e9-ab66-98bc1a640f10}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\..\Network2\Network2-VS2015.vcxproj">
+    <ProjectReference Include="..\..\..\Common\Network2\Network2-VS2017.vcxproj">
       <Project>{b98e9721-f7a3-4e2d-a7a1-7708cb2d0d6e}</Project>
     </ProjectReference>
   </ItemGroup>

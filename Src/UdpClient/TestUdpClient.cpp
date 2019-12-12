@@ -1,6 +1,7 @@
 //
-// 2019-12-05, jjuiddong
-// tcp/ip client sample
+// 2019-12-12, jjuiddong
+// upd/ip client sample
+//	udp client is only send module
 //
 #include "pch.h"
 #include "../Protocol/Src/basic_Protocol.h"
@@ -9,38 +10,6 @@
 
 using namespace std;
 bool g_isLoop = true;
-
-class cPacketHandler : public basic::s2c_ProtocolHandler
-{
-public:
-	cPacketHandler() {}
-	virtual ~cPacketHandler() {}
-
-	virtual bool func1(basic::func1_Packet &packet) 
-	{ 
-		cout << "recv basic::func1_Packet" << endl;
-		return true; 
-	}
-
-	virtual bool func2(basic::func2_Packet &packet)
-	{
-		cout << "recv basic::func2_Packet" << endl;
-		return true;
-	}
-
-	virtual bool func3(basic::func3_Packet &packet)
-	{
-		cout << "recv basic::func3_Packet" << endl;
-		return true;
-	}
-
-	virtual bool func4(basic::func4_Packet &packet)
-	{
-		cout << "recv basic::func4_Packet" << endl;
-		return true;
-	}
-};
-
 
 
 BOOL CtrlHandler(DWORD fdwCtrlType)
@@ -72,14 +41,12 @@ int main(const int argc, const char *argv[])
 	}
 
 	network2::cNetController netController;
-	network2::cTcpClient client;
-	cPacketHandler handler;
+	network2::cUdpClient client;
 	basic::c2s_Protocol m_protocol;
 
-	client.AddProtocolHandler(&handler);
 	client.RegisterProtocol(&m_protocol);
 
-	if (!netController.StartTcpClient(&client, ip.c_str(), port))
+	if (!netController.StartUdpClient(&client, ip.c_str(), port))
 	{
 		cout << "Error Client Connection" << endl;
 	}
@@ -111,7 +78,7 @@ int main(const int argc, const char *argv[])
 			{
 				cout << "Work " << endl;
 				vector<int> path;
-				for (int i=1; i < 10; ++i)
+				for (int i = 1; i < 10; ++i)
 					path.push_back(i);
 				m_protocol.Work(network2::SERVER_NETID, 1, 2, 3, path, "work str");
 				Sleep(1000);

@@ -1,17 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="pch.cpp" />
+    <Filter Include="protocol_src">
+      <UniqueIdentifier>{0bffd355-e99c-4cb3-8b03-49368d1d472e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
     <ClCompile Include="..\Protocol\Src\basic_Protocol.cpp">
       <Filter>protocol_src</Filter>
     </ClCompile>
     <ClCompile Include="..\Protocol\Src\basic_ProtocolHandler.cpp">
       <Filter>protocol_src</Filter>
     </ClCompile>
-    <ClCompile Include="TestTcpServer.cpp" />
+    <ClCompile Include="TestUdpClient.cpp" />
+    <ClCompile Include="pch.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="pch.h" />
     <ClInclude Include="..\Protocol\Src\basic_Protocol.h">
       <Filter>protocol_src</Filter>
     </ClInclude>
@@ -21,18 +25,6 @@
     <ClInclude Include="..\Protocol\Src\basic_ProtocolHandler.h">
       <Filter>protocol_src</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Filter Include="protocol">
-      <UniqueIdentifier>{6d55d9e2-ecde-4781-9d0d-b04e8107e833}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="protocol_src">
-      <UniqueIdentifier>{23f5ae54-2f12-4ec8-8e96-1ec99d65b917}</UniqueIdentifier>
-    </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <CustomBuild Include="..\Protocol\basic.prt">
-      <Filter>protocol</Filter>
-    </CustomBuild>
+    <ClInclude Include="pch.h" />
   </ItemGroup>
 </Project>
