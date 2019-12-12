@@ -8,3 +8,10 @@ Network Library with VS2017 C++, WinSock
   - inherit packet handler inteface
   - using realtime type information, call packet function
   
+- Sample
+  - TCP Server/Client
+  - UDP Server/Client
+  - TCP Transaction Test Client
+  - UDP Transaction Test Client
+  - Chatting Server/Client
+  
