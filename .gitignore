@@ -328,3 +328,13 @@ ASALocalRun/
 
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
+Src/TcpServer/errlog.txt
+Src/TcpClient/log.txt
+Src/ChatServer/log.txt
+Src/TcpClient/errlog.txt
+Src/TcpServer/log.txt
+Src/TransactionTCPClient/errlog.txt
+Src/TransactionTCPClient/log.txt
+Src/TransactionUDPClient/log.txt
+Package/errlog.txt
+Package/log.txt
