@@ -7,7 +7,7 @@ Network Library with VS2017 C++, WinSock
   - Automate Generate C++ Code for Send/Recv Packet Parser and Maker
 - Automate Call Packet Receive Function
   - inherit packet handler inteface
-  - using realtime type information, call packet function
+  - using realtime type information, call packet handling function
 - Tool
   - Protocol Generator
     - need boost library build
