@@ -11,7 +11,6 @@ Network Library with VS2017 C++, WinSock
 - Tool
   - Protocol Generator
     - need boost library
-stage
 - Sample
   - TCP Server/Client
   - UDP Server/Client
