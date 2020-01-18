@@ -10,9 +10,8 @@ Network Library with VS2017 C++, WinSock
   - using realtime type information, call packet handling function
 - Tool
   - Protocol Generator
-    - need boost library build
-    - change STL debug level option for debug mode
-    - ex) c:\tools\bjam toolset=msvc link=static threading=multi define="_ITERATOR_DEBUG_LEVEL=0" define="_HAS_ITERATOR_DEBUGGING=0" debug stage
+    - need boost library
+stage
 - Sample
   - TCP Server/Client
   - UDP Server/Client
