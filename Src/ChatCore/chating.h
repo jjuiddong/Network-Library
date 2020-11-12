@@ -1,12 +1,9 @@
-#pragma once
-
-//#include "chatBin_Protocol.h"
-//#include "chatBin_ProtocolData.h"
-//#include "chatBin_ProtocolHandler.h"
 //
-//#include "chatAsc_Protocol.h"
-//#include "chatAsc_ProtocolData.h"
-//#include "chatAsc_ProtocolHandler.h"
+// 2020-11-12, jjuiddong
+//	Do not inherit Binary and ASCII handler at the same time.
+//	This sample shows that you can inherit multiple handlers.
+//
+#pragma once
 
 #include "../Protocol/Src/chatBin_Protocol.h"
 #include "../Protocol/Src/chatBin_ProtocolData.h"
@@ -16,7 +13,7 @@
 #include "../Protocol/Src/chatAsc_ProtocolData.h"
 #include "../Protocol/Src/chatAsc_ProtocolHandler.h"
 
-// 서버 class
+// chatting server class
 class cChatingServer : 
 	public chatBin::c2s_ProtocolHandler ,
 	public chatAsc::asc_ProtocolHandler
@@ -42,7 +39,7 @@ public:
 	chatAsc::asc_Protocol m_prtAsc;
 };
 
-// 클라이언트 class
+// chatting client class
 class cChatingClient : 
 	public chatBin::s2c_ProtocolHandler ,
 	public chatAsc::asc_ProtocolHandler

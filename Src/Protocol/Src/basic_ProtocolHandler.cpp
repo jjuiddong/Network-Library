@@ -5,7 +5,7 @@ using namespace basic;
 
 
 basic::s2c_Dispatcher::s2c_Dispatcher()
-	: cProtocolDispatcher(basic::s2c_Dispatcher_ID)
+	: cProtocolDispatcher(basic::s2c_Dispatcher_ID, ePacketFormat::BINARY)
 {
 	cProtocolDispatcher::GetDispatcherMap()->insert({s2c_Dispatcher_ID, this });
 }
@@ -124,7 +124,7 @@ bool basic::s2c_Dispatcher::Dispatch(cPacket &packet, const ProtocolHandlers &ha
 
 
 basic::c2s_Dispatcher::c2s_Dispatcher()
-	: cProtocolDispatcher(basic::c2s_Dispatcher_ID)
+	: cProtocolDispatcher(basic::c2s_Dispatcher_ID, ePacketFormat::BINARY)
 {
 	cProtocolDispatcher::GetDispatcherMap()->insert({c2s_Dispatcher_ID, this });
 }

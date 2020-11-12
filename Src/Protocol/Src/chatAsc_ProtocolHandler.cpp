@@ -5,7 +5,7 @@ using namespace chatAsc;
 
 
 chatAsc::asc_Dispatcher::asc_Dispatcher()
-	: cProtocolDispatcher(chatAsc::asc_Dispatcher_ID)
+	: cProtocolDispatcher(chatAsc::asc_Dispatcher_ID, ePacketFormat::ASCII)
 {
 	cProtocolDispatcher::GetDispatcherMap()->insert({asc_Dispatcher_ID, this });
 }

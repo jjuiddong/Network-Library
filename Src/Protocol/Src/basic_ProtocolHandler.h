@@ -27,7 +27,9 @@ static s2c_Dispatcher g_basic_s2c_Dispatcher;
 // ProtocolHandler
 class s2c_ProtocolHandler : virtual public network2::iProtocolHandler
 {
+public:
 	friend class s2c_Dispatcher;
+	s2c_ProtocolHandler() { m_format = ePacketFormat::BINARY; }
 	virtual bool AckLogin(basic::AckLogin_Packet &packet) { return true; }
 	virtual bool ReqWork(basic::ReqWork_Packet &packet) { return true; }
 	virtual bool func1(basic::func1_Packet &packet) { return true; }
@@ -53,7 +55,9 @@ static c2s_Dispatcher g_basic_c2s_Dispatcher;
 // ProtocolHandler
 class c2s_ProtocolHandler : virtual public network2::iProtocolHandler
 {
+public:
 	friend class c2s_Dispatcher;
+	c2s_ProtocolHandler() { m_format = ePacketFormat::BINARY; }
 	virtual bool ReqLogin(basic::ReqLogin_Packet &packet) { return true; }
 	virtual bool AckWork(basic::AckWork_Packet &packet) { return true; }
 	virtual bool Work(basic::Work_Packet &packet) { return true; }

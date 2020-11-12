@@ -1,5 +1,5 @@
 
-protocol asc 100
+protocol asc 100 ascii
 {
 	AckLogin(  );
 	ReqLogin( string name );

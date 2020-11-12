@@ -1,7 +1,7 @@
 //
 // 2019-12-12, jjuiddong
 // udp/ip server sample
-//	udp server is only receive module
+// udp server is only receive module
 //
 #include "pch.h"
 #include "../Protocol/Src/basic_Protocol.h"

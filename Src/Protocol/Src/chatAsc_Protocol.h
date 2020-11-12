@@ -14,7 +14,7 @@ static const int asc_Protocol_ID = 100;
 class asc_Protocol : public network2::iProtocol
 {
 public:
-	asc_Protocol() : iProtocol(asc_Protocol_ID) {}
+	asc_Protocol() : iProtocol(asc_Protocol_ID, ePacketFormat::ASCII) {}
 	void AckLogin(netid targetId);
 	void ReqLogin(netid targetId, const string &name);
 	void ReqLogout(netid targetId, const string &name);

@@ -1,13 +1,13 @@
 //------------------------------------------------------------------------
-// Name:    chatBin_ProtocolHandler.h
+// Name:    basic_ProtocolHandler.h
 // Author:  ProtocolGenerator (by jjuiddong)
 // Date:    
 //------------------------------------------------------------------------
 #pragma once
 
-#include "chatBin_ProtocolData.h"
+#include "basic_ProtocolData.h"
 
-namespace chatBin {
+namespace basic {
 
 using namespace network2;
 using namespace marshalling;
@@ -21,19 +21,19 @@ public:
 protected:
 	virtual bool Dispatch(cPacket &packet, const ProtocolHandlers &handlers) override;
 };
-static s2c_Dispatcher g_chatBin_s2c_Dispatcher;
+static s2c_Dispatcher g_basic_s2c_Dispatcher;
 
 
 // ProtocolHandler
 class s2c_ProtocolHandler : virtual public network2::iProtocolHandler
 {
-public:
 	friend class s2c_Dispatcher;
-	s2c_ProtocolHandler() { m_format = ePacketFormat::BINARY; }
-	virtual bool AckLogin(chatBin::AckLogin_Packet &packet) { return true; }
-	virtual bool notice(chatBin::notice_Packet &packet) { return true; }
-	virtual bool broadcasting(chatBin::broadcasting_Packet &packet) { return true; }
-	virtual bool broadcastingStruct(chatBin::broadcastingStruct_Packet &packet) { return true; }
+	virtual bool func1(basic::func1_Packet &packet) { return true; }
+	virtual bool func2(basic::func2_Packet &packet) { return true; }
+	virtual bool func3(basic::func3_Packet &packet) { return true; }
+	virtual bool func4(basic::func4_Packet &packet) { return true; }
+	virtual bool func5(basic::func5_Packet &packet) { return true; }
+	virtual bool func6(basic::func6_Packet &packet) { return true; }
 };
 
 
@@ -47,19 +47,15 @@ public:
 protected:
 	virtual bool Dispatch(cPacket &packet, const ProtocolHandlers &handlers) override;
 };
-static c2s_Dispatcher g_chatBin_c2s_Dispatcher;
+static c2s_Dispatcher g_basic_c2s_Dispatcher;
 
 
 // ProtocolHandler
 class c2s_ProtocolHandler : virtual public network2::iProtocolHandler
 {
-public:
 	friend class c2s_Dispatcher;
-	c2s_ProtocolHandler() { m_format = ePacketFormat::BINARY; }
-	virtual bool ReqLogin(chatBin::ReqLogin_Packet &packet) { return true; }
-	virtual bool ReqLogout(chatBin::ReqLogout_Packet &packet) { return true; }
-	virtual bool chat(chatBin::chat_Packet &packet) { return true; }
-	virtual bool chatStruct(chatBin::chatStruct_Packet &packet) { return true; }
+	virtual bool func5(basic::func5_Packet &packet) { return true; }
+	virtual bool func6(basic::func6_Packet &packet) { return true; }
 };
 
 

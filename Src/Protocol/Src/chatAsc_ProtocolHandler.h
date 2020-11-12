@@ -27,7 +27,9 @@ static asc_Dispatcher g_chatAsc_asc_Dispatcher;
 // ProtocolHandler
 class asc_ProtocolHandler : virtual public network2::iProtocolHandler
 {
+public:
 	friend class asc_Dispatcher;
+	asc_ProtocolHandler() { m_format = ePacketFormat::ASCII; }
 	virtual bool AckLogin(chatAsc::AckLogin_Packet &packet) { return true; }
 	virtual bool ReqLogin(chatAsc::ReqLogin_Packet &packet) { return true; }
 	virtual bool ReqLogout(chatAsc::ReqLogout_Packet &packet) { return true; }

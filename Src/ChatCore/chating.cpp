@@ -7,7 +7,7 @@ using namespace std;
 using namespace network2;
 
 cChatingServer::cChatingServer() :
-	m_server(new cPacketHeaderAscii(), new cSessionFactory())
+	m_server(new cSessionFactory())
 {
 	m_server.AddProtocolHandler(this);
 	m_server.RegisterProtocol(&m_prtAsc);
@@ -84,23 +84,15 @@ bool cChatingServer::chat(chatAsc::chat_Packet & packet)
 
 bool cChatingServer::chatstruct(chatAsc::chatstruct_Packet &packet)
 {
-	const int packetId = packet.pdispatcher->m_packet->GetPacketId();
-	BYTE ID[5]{ NULL };
-	*(int*)ID = packetId;
-	string idstr;
-	idstr.resize(5);
-	memmove_s(&idstr, 5, ID, 5);
-
 	network2::cSession *session = m_server.FindSessionByNetId(packet.senderId);
 	cout << "ID = " << session->m_name.m_str << "\t";
-	cout << "Data = " << idstr << " " << packet.sChat.data << endl;
+	cout << "Data = " << "chatstruct" << " " << packet.sChat.data << endl;
 	m_prtAsc.broadcastingStruct(network2::ALL_NETID, session->m_name.m_str, packet.sChat);
 
 	return true;
 }
 
-cChatingClient::cChatingClient() :
-	m_client(new network2::cPacketHeaderAscii())
+cChatingClient::cChatingClient() 
 {
 	m_client.AddProtocolHandler(this);
 	m_client.RegisterProtocol(&prtAsc);
@@ -159,17 +151,10 @@ bool cChatingClient::broadcasting(chatAsc::broadcasting_Packet &packet)
 
 bool cChatingClient::broadcastingStruct(chatAsc::broadcastingStruct_Packet &packet)
 {
-	const int packetId = packet.pdispatcher->m_packet->GetPacketId();
-	BYTE ID[5]{ NULL };
-	*(int*)ID = packetId;
-	string idstr;
-	idstr.resize(5);
-	memmove_s(&idstr, 5, ID, 5);
-
 	if (packet.name != m_name) 
 	{
 		cout << packet.name << " : ";
-		cout << idstr << " " << packet.sChat.data << endl;
+		cout << "broadcastingStruct" << " " << packet.sChat.data << endl;
 	}
 	return true;
 }
