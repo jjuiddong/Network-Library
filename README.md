@@ -8,6 +8,8 @@ Network Library with VS2017 C++, WinSock
 - Automate Call Packet Receive Function
   - inherit packet handler inteface
   - using realtime type information, call packet handling function
+- WebClient with Poco Library
+  - https://pocoproject.org/
 - Tool
   - Protocol Generator
     - need boost library
