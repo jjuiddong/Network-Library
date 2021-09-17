@@ -3,6 +3,9 @@
 //	Do not inherit Binary and ASCII handler at the same time.
 //	This sample shows that you can inherit multiple handlers.
 //
+// 2021-09-17
+//	- can handling multiple format protocol. binary, ascii, json etc..
+//
 #pragma once
 
 #include "../Protocol/Src/chatBin_Protocol.h"
