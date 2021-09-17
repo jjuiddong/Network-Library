@@ -20,6 +20,7 @@ public:
 	asc_Dispatcher();
 protected:
 	virtual bool Dispatch(cPacket &packet, const ProtocolHandlers &handlers) override;
+	static cPacketHeaderAscii s_packetHeader;
 };
 static asc_Dispatcher g_chatAsc_asc_Dispatcher;
 

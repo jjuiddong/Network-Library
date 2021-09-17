@@ -4,10 +4,12 @@
 using namespace chatAsc;
 
 
+cPacketHeaderAscii chatAsc::asc_Dispatcher::s_packetHeader;
 chatAsc::asc_Dispatcher::asc_Dispatcher()
 	: cProtocolDispatcher(chatAsc::asc_Dispatcher_ID, ePacketFormat::ASCII)
 {
-	cProtocolDispatcher::GetDispatcherMap()->insert({asc_Dispatcher_ID, this });
+	cProtocolDispatcher::GetDispatcherMap()->insert({asc_Dispatcher_ID, this});
+	cProtocolDispatcher::GetPacketHeaderMap()->insert({asc_Dispatcher_ID, &s_packetHeader});
 }
 
 //------------------------------------------------------------------------
@@ -19,7 +21,7 @@ bool chatAsc::asc_Dispatcher::Dispatch(cPacket &packet, const ProtocolHandlers &
 	const int packetId = packet.GetPacketId();
 	switch (packetId)
 	{
-	case 851424104:
+	case 851424104: // AckLogin
 		{
 			ProtocolHandlers prtHandler;
 			if (!HandlerMatching<asc_ProtocolHandler>(handlers, prtHandler))
@@ -34,7 +36,7 @@ bool chatAsc::asc_Dispatcher::Dispatch(cPacket &packet, const ProtocolHandlers &
 		}
 		break;
 
-	case 1956887904:
+	case 1956887904: // ReqLogin
 		{
 			ProtocolHandlers prtHandler;
 			if (!HandlerMatching<asc_ProtocolHandler>(handlers, prtHandler))
@@ -50,7 +52,7 @@ bool chatAsc::asc_Dispatcher::Dispatch(cPacket &packet, const ProtocolHandlers &
 		}
 		break;
 
-	case 1095604361:
+	case 1095604361: // ReqLogout
 		{
 			ProtocolHandlers prtHandler;
 			if (!HandlerMatching<asc_ProtocolHandler>(handlers, prtHandler))
@@ -66,7 +68,7 @@ bool chatAsc::asc_Dispatcher::Dispatch(cPacket &packet, const ProtocolHandlers &
 		}
 		break;
 
-	case 1145980243:
+	case 1145980243: // chat
 		{
 			ProtocolHandlers prtHandler;
 			if (!HandlerMatching<asc_ProtocolHandler>(handlers, prtHandler))
@@ -82,7 +84,7 @@ bool chatAsc::asc_Dispatcher::Dispatch(cPacket &packet, const ProtocolHandlers &
 		}
 		break;
 
-	case 1413564483:
+	case 1413564483: // chatstruct
 		{
 			ProtocolHandlers prtHandler;
 			if (!HandlerMatching<asc_ProtocolHandler>(handlers, prtHandler))
@@ -98,7 +100,7 @@ bool chatAsc::asc_Dispatcher::Dispatch(cPacket &packet, const ProtocolHandlers &
 		}
 		break;
 
-	case 1313821763:
+	case 1313821763: // notice
 		{
 			ProtocolHandlers prtHandler;
 			if (!HandlerMatching<asc_ProtocolHandler>(handlers, prtHandler))
@@ -114,7 +116,7 @@ bool chatAsc::asc_Dispatcher::Dispatch(cPacket &packet, const ProtocolHandlers &
 		}
 		break;
 
-	case 1128550978:
+	case 1128550978: // broadcasting
 		{
 			ProtocolHandlers prtHandler;
 			if (!HandlerMatching<asc_ProtocolHandler>(handlers, prtHandler))
@@ -131,7 +133,7 @@ bool chatAsc::asc_Dispatcher::Dispatch(cPacket &packet, const ProtocolHandlers &
 		}
 		break;
 
-	case 1396986434:
+	case 1396986434: // broadcastingStruct
 		{
 			ProtocolHandlers prtHandler;
 			if (!HandlerMatching<asc_ProtocolHandler>(handlers, prtHandler))

@@ -23,5 +23,6 @@ public:
 	void notice(netid targetId, const std::string &name);
 	void broadcasting(netid targetId, const std::string &name, const std::string &data);
 	void broadcastingStruct(netid targetId, const std::string &name, const sChatStruct &sChat);
+	static cPacketHeaderAscii s_packetHeader;
 };
 }

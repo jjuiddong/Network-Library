@@ -21,6 +21,7 @@ public:
 	void func2(netid targetId, const std::string &str);
 	void func3(netid targetId, const float &value);
 	void func4(netid targetId);
+	static cPacketHeader s_packetHeader;
 };
 static const int c2s_Protocol_ID = 300;
 
@@ -33,5 +34,6 @@ public:
 	void Work(netid targetId, const int &workId, const int &status, const int &statusValue, const vector<int> &path, const string &name);
 	void func5(netid targetId, const std::string &str);
 	void func6(netid targetId, const float &value);
+	static cPacketHeader s_packetHeader;
 };
 }

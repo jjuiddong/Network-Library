@@ -95,7 +95,7 @@ bool cChatingServer::chatstruct(chatAsc::chatstruct_Packet &packet)
 cChatingClient::cChatingClient() 
 {
 	m_client.AddProtocolHandler(this);
-	m_client.RegisterProtocol(&prtAsc);
+	m_client.RegisterProtocol(&m_prtAsc);
 }
 
 cChatingClient::~cChatingClient()
@@ -172,7 +172,7 @@ void cChatingClient::Process()
 			scanf("%s", data);
 			string chat_str(data);
 
-			const bool isBinaryProtocol = m_client.GetPacketHeader()->GetHeaderSize() > 10;
+			const bool isBinaryProtocol = true;
 			if (isBinaryProtocol)
 			{
 				if (chat_str == "Login") 
@@ -198,17 +198,17 @@ void cChatingClient::Process()
 				{
 					cout << "ID : ";
 					scanf("%s", m_name);
-					prtAsc.ReqLogin(network2::SERVER_NETID, m_name);
+					m_prtAsc.ReqLogin(network2::SERVER_NETID, m_name);
 				}
 				else if (chat_str == "Logout")
 				{
-					prtAsc.ReqLogout(network2::SERVER_NETID, m_name);
+					m_prtAsc.ReqLogout(network2::SERVER_NETID, m_name);
 				}
 				else 
 				{
-					prtAsc.chat(network2::SERVER_NETID, chat_str);
+					m_prtAsc.chat(network2::SERVER_NETID, chat_str);
 					network2::sChatStruct chatTest = network2::sChatStruct(m_name, chat_str, m_client.GetId());
-					prtAsc.chatstruct(network2::SERVER_NETID, chatTest);
+					m_prtAsc.chatstruct(network2::SERVER_NETID, chatTest);
 				}
 			}
 		}

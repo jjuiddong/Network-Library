@@ -20,6 +20,7 @@ public:
 	s2c_Dispatcher();
 protected:
 	virtual bool Dispatch(cPacket &packet, const ProtocolHandlers &handlers) override;
+	static cPacketHeader s_packetHeader;
 };
 static s2c_Dispatcher g_chatBin_s2c_Dispatcher;
 
@@ -46,6 +47,7 @@ public:
 	c2s_Dispatcher();
 protected:
 	virtual bool Dispatch(cPacket &packet, const ProtocolHandlers &handlers) override;
+	static cPacketHeader s_packetHeader;
 };
 static c2s_Dispatcher g_chatBin_c2s_Dispatcher;
 

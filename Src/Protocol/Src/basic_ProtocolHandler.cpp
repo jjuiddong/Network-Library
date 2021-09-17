@@ -4,10 +4,12 @@
 using namespace basic;
 
 
+cPacketHeader basic::s2c_Dispatcher::s_packetHeader;
 basic::s2c_Dispatcher::s2c_Dispatcher()
 	: cProtocolDispatcher(basic::s2c_Dispatcher_ID, ePacketFormat::BINARY)
 {
-	cProtocolDispatcher::GetDispatcherMap()->insert({s2c_Dispatcher_ID, this });
+	cProtocolDispatcher::GetDispatcherMap()->insert({s2c_Dispatcher_ID, this});
+	cProtocolDispatcher::GetPacketHeaderMap()->insert({s2c_Dispatcher_ID, &s_packetHeader});
 }
 
 //------------------------------------------------------------------------
@@ -19,7 +21,7 @@ bool basic::s2c_Dispatcher::Dispatch(cPacket &packet, const ProtocolHandlers &ha
 	const int packetId = packet.GetPacketId();
 	switch (packetId)
 	{
-	case 851424104:
+	case 851424104: // AckLogin
 		{
 			ProtocolHandlers prtHandler;
 			if (!HandlerMatching<s2c_ProtocolHandler>(handlers, prtHandler))
@@ -35,7 +37,7 @@ bool basic::s2c_Dispatcher::Dispatch(cPacket &packet, const ProtocolHandlers &ha
 		}
 		break;
 
-	case 3933130150:
+	case 3933130150: // ReqWork
 		{
 			ProtocolHandlers prtHandler;
 			if (!HandlerMatching<s2c_ProtocolHandler>(handlers, prtHandler))
@@ -51,7 +53,7 @@ bool basic::s2c_Dispatcher::Dispatch(cPacket &packet, const ProtocolHandlers &ha
 		}
 		break;
 
-	case 3587614684:
+	case 3587614684: // func1
 		{
 			ProtocolHandlers prtHandler;
 			if (!HandlerMatching<s2c_ProtocolHandler>(handlers, prtHandler))
@@ -66,7 +68,7 @@ bool basic::s2c_Dispatcher::Dispatch(cPacket &packet, const ProtocolHandlers &ha
 		}
 		break;
 
-	case 2592878926:
+	case 2592878926: // func2
 		{
 			ProtocolHandlers prtHandler;
 			if (!HandlerMatching<s2c_ProtocolHandler>(handlers, prtHandler))
@@ -82,7 +84,7 @@ bool basic::s2c_Dispatcher::Dispatch(cPacket &packet, const ProtocolHandlers &ha
 		}
 		break;
 
-	case 3387225200:
+	case 3387225200: // func3
 		{
 			ProtocolHandlers prtHandler;
 			if (!HandlerMatching<s2c_ProtocolHandler>(handlers, prtHandler))
@@ -98,7 +100,7 @@ bool basic::s2c_Dispatcher::Dispatch(cPacket &packet, const ProtocolHandlers &ha
 		}
 		break;
 
-	case 4124054319:
+	case 4124054319: // func4
 		{
 			ProtocolHandlers prtHandler;
 			if (!HandlerMatching<s2c_ProtocolHandler>(handlers, prtHandler))
@@ -123,10 +125,12 @@ bool basic::s2c_Dispatcher::Dispatch(cPacket &packet, const ProtocolHandlers &ha
 
 
 
+cPacketHeader basic::c2s_Dispatcher::s_packetHeader;
 basic::c2s_Dispatcher::c2s_Dispatcher()
 	: cProtocolDispatcher(basic::c2s_Dispatcher_ID, ePacketFormat::BINARY)
 {
-	cProtocolDispatcher::GetDispatcherMap()->insert({c2s_Dispatcher_ID, this });
+	cProtocolDispatcher::GetDispatcherMap()->insert({c2s_Dispatcher_ID, this});
+	cProtocolDispatcher::GetPacketHeaderMap()->insert({c2s_Dispatcher_ID, &s_packetHeader});
 }
 
 //------------------------------------------------------------------------
@@ -138,7 +142,7 @@ bool basic::c2s_Dispatcher::Dispatch(cPacket &packet, const ProtocolHandlers &ha
 	const int packetId = packet.GetPacketId();
 	switch (packetId)
 	{
-	case 1956887904:
+	case 1956887904: // ReqLogin
 		{
 			ProtocolHandlers prtHandler;
 			if (!HandlerMatching<c2s_ProtocolHandler>(handlers, prtHandler))
@@ -154,7 +158,7 @@ bool basic::c2s_Dispatcher::Dispatch(cPacket &packet, const ProtocolHandlers &ha
 		}
 		break;
 
-	case 3785607084:
+	case 3785607084: // AckWork
 		{
 			ProtocolHandlers prtHandler;
 			if (!HandlerMatching<c2s_ProtocolHandler>(handlers, prtHandler))
@@ -170,7 +174,7 @@ bool basic::c2s_Dispatcher::Dispatch(cPacket &packet, const ProtocolHandlers &ha
 		}
 		break;
 
-	case 964611405:
+	case 964611405: // Work
 		{
 			ProtocolHandlers prtHandler;
 			if (!HandlerMatching<c2s_ProtocolHandler>(handlers, prtHandler))
@@ -190,7 +194,7 @@ bool basic::c2s_Dispatcher::Dispatch(cPacket &packet, const ProtocolHandlers &ha
 		}
 		break;
 
-	case 622789402:
+	case 622789402: // func5
 		{
 			ProtocolHandlers prtHandler;
 			if (!HandlerMatching<c2s_ProtocolHandler>(handlers, prtHandler))
@@ -206,7 +210,7 @@ bool basic::c2s_Dispatcher::Dispatch(cPacket &packet, const ProtocolHandlers &ha
 		}
 		break;
 
-	case 1506470321:
+	case 1506470321: // func6
 		{
 			ProtocolHandlers prtHandler;
 			if (!HandlerMatching<c2s_ProtocolHandler>(handlers, prtHandler))

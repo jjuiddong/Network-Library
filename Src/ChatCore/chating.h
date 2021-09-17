@@ -63,7 +63,7 @@ public:
 public:
 	network2::cTcpClient m_client;
 	chatBin::c2s_Protocol m_prtBin;
-	chatAsc::asc_Protocol prtAsc;
+	chatAsc::asc_Protocol m_prtAsc;
 
 	char m_name[32];
 };

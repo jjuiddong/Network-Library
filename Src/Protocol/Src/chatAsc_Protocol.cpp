@@ -2,12 +2,13 @@
 #include "chatAsc_Protocol.h"
 using namespace chatAsc;
 
+cPacketHeaderAscii chatAsc::asc_Protocol::s_packetHeader;
 //------------------------------------------------------------------------
 // Protocol: AckLogin
 //------------------------------------------------------------------------
 void chatAsc::asc_Protocol::AckLogin(netid targetId)
 {
-	cPacket packet(m_node->GetPacketHeader());
+	cPacket packet(&s_packetHeader);
 	packet.SetProtocolId( GetId() );
 	packet.SetPacketId( 851424104 );
 	packet.EndPack();
@@ -19,7 +20,7 @@ void chatAsc::asc_Protocol::AckLogin(netid targetId)
 //------------------------------------------------------------------------
 void chatAsc::asc_Protocol::ReqLogin(netid targetId, const string &name)
 {
-	cPacket packet(m_node->GetPacketHeader());
+	cPacket packet(&s_packetHeader);
 	packet.SetProtocolId( GetId() );
 	packet.SetPacketId( 1956887904 );
 	packet << name;
@@ -33,7 +34,7 @@ void chatAsc::asc_Protocol::ReqLogin(netid targetId, const string &name)
 //------------------------------------------------------------------------
 void chatAsc::asc_Protocol::ReqLogout(netid targetId, const string &name)
 {
-	cPacket packet(m_node->GetPacketHeader());
+	cPacket packet(&s_packetHeader);
 	packet.SetProtocolId( GetId() );
 	packet.SetPacketId( 1095604361 );
 	packet << name;
@@ -47,7 +48,7 @@ void chatAsc::asc_Protocol::ReqLogout(netid targetId, const string &name)
 //------------------------------------------------------------------------
 void chatAsc::asc_Protocol::chat(netid targetId, const std::string &data)
 {
-	cPacket packet(m_node->GetPacketHeader());
+	cPacket packet(&s_packetHeader);
 	packet.SetProtocolId( GetId() );
 	packet.SetPacketId( 1145980243 );
 	packet << data;
@@ -61,7 +62,7 @@ void chatAsc::asc_Protocol::chat(netid targetId, const std::string &data)
 //------------------------------------------------------------------------
 void chatAsc::asc_Protocol::chatstruct(netid targetId, const sChatStruct &sChat)
 {
-	cPacket packet(m_node->GetPacketHeader());
+	cPacket packet(&s_packetHeader);
 	packet.SetProtocolId( GetId() );
 	packet.SetPacketId( 1413564483 );
 	packet << sChat;
@@ -75,7 +76,7 @@ void chatAsc::asc_Protocol::chatstruct(netid targetId, const sChatStruct &sChat)
 //------------------------------------------------------------------------
 void chatAsc::asc_Protocol::notice(netid targetId, const std::string &name)
 {
-	cPacket packet(m_node->GetPacketHeader());
+	cPacket packet(&s_packetHeader);
 	packet.SetProtocolId( GetId() );
 	packet.SetPacketId( 1313821763 );
 	packet << name;
@@ -89,7 +90,7 @@ void chatAsc::asc_Protocol::notice(netid targetId, const std::string &name)
 //------------------------------------------------------------------------
 void chatAsc::asc_Protocol::broadcasting(netid targetId, const std::string &name, const std::string &data)
 {
-	cPacket packet(m_node->GetPacketHeader());
+	cPacket packet(&s_packetHeader);
 	packet.SetProtocolId( GetId() );
 	packet.SetPacketId( 1128550978 );
 	packet << name;
@@ -105,7 +106,7 @@ void chatAsc::asc_Protocol::broadcasting(netid targetId, const std::string &name
 //------------------------------------------------------------------------
 void chatAsc::asc_Protocol::broadcastingStruct(netid targetId, const std::string &name, const sChatStruct &sChat)
 {
-	cPacket packet(m_node->GetPacketHeader());
+	cPacket packet(&s_packetHeader);
 	packet.SetProtocolId( GetId() );
 	packet.SetPacketId( 1396986434 );
 	packet << name;

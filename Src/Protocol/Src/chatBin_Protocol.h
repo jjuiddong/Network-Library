@@ -19,6 +19,7 @@ public:
 	void notice(netid targetId, const std::string &name);
 	void broadcasting(netid targetId, const std::string &name, const std::string &data);
 	void broadcastingStruct(netid targetId, const std::string &name, const sChatStruct &chat);
+	static cPacketHeader s_packetHeader;
 };
 static const int c2s_Protocol_ID = 300;
 
@@ -30,5 +31,6 @@ public:
 	void ReqLogout(netid targetId, const string &id);
 	void chat(netid targetId, const std::string &data);
 	void chatStruct(netid targetId, const sChatStruct &chat);
+	static cPacketHeader s_packetHeader;
 };
 }

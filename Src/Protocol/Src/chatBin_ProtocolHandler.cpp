@@ -4,10 +4,12 @@
 using namespace chatBin;
 
 
+cPacketHeader chatBin::s2c_Dispatcher::s_packetHeader;
 chatBin::s2c_Dispatcher::s2c_Dispatcher()
 	: cProtocolDispatcher(chatBin::s2c_Dispatcher_ID, ePacketFormat::BINARY)
 {
-	cProtocolDispatcher::GetDispatcherMap()->insert({s2c_Dispatcher_ID, this });
+	cProtocolDispatcher::GetDispatcherMap()->insert({s2c_Dispatcher_ID, this});
+	cProtocolDispatcher::GetPacketHeaderMap()->insert({s2c_Dispatcher_ID, &s_packetHeader});
 }
 
 //------------------------------------------------------------------------
@@ -19,7 +21,7 @@ bool chatBin::s2c_Dispatcher::Dispatch(cPacket &packet, const ProtocolHandlers &
 	const int packetId = packet.GetPacketId();
 	switch (packetId)
 	{
-	case 851424104:
+	case 851424104: // AckLogin
 		{
 			ProtocolHandlers prtHandler;
 			if (!HandlerMatching<s2c_ProtocolHandler>(handlers, prtHandler))
@@ -34,7 +36,7 @@ bool chatBin::s2c_Dispatcher::Dispatch(cPacket &packet, const ProtocolHandlers &
 		}
 		break;
 
-	case 27040168:
+	case 27040168: // notice
 		{
 			ProtocolHandlers prtHandler;
 			if (!HandlerMatching<s2c_ProtocolHandler>(handlers, prtHandler))
@@ -50,7 +52,7 @@ bool chatBin::s2c_Dispatcher::Dispatch(cPacket &packet, const ProtocolHandlers &
 		}
 		break;
 
-	case 3651228816:
+	case 3651228816: // broadcasting
 		{
 			ProtocolHandlers prtHandler;
 			if (!HandlerMatching<s2c_ProtocolHandler>(handlers, prtHandler))
@@ -67,7 +69,7 @@ bool chatBin::s2c_Dispatcher::Dispatch(cPacket &packet, const ProtocolHandlers &
 		}
 		break;
 
-	case 810651236:
+	case 810651236: // broadcastingStruct
 		{
 			ProtocolHandlers prtHandler;
 			if (!HandlerMatching<s2c_ProtocolHandler>(handlers, prtHandler))
@@ -94,10 +96,12 @@ bool chatBin::s2c_Dispatcher::Dispatch(cPacket &packet, const ProtocolHandlers &
 
 
 
+cPacketHeader chatBin::c2s_Dispatcher::s_packetHeader;
 chatBin::c2s_Dispatcher::c2s_Dispatcher()
 	: cProtocolDispatcher(chatBin::c2s_Dispatcher_ID, ePacketFormat::BINARY)
 {
-	cProtocolDispatcher::GetDispatcherMap()->insert({c2s_Dispatcher_ID, this });
+	cProtocolDispatcher::GetDispatcherMap()->insert({c2s_Dispatcher_ID, this});
+	cProtocolDispatcher::GetPacketHeaderMap()->insert({c2s_Dispatcher_ID, &s_packetHeader});
 }
 
 //------------------------------------------------------------------------
@@ -109,7 +113,7 @@ bool chatBin::c2s_Dispatcher::Dispatch(cPacket &packet, const ProtocolHandlers &
 	const int packetId = packet.GetPacketId();
 	switch (packetId)
 	{
-	case 1956887904:
+	case 1956887904: // ReqLogin
 		{
 			ProtocolHandlers prtHandler;
 			if (!HandlerMatching<c2s_ProtocolHandler>(handlers, prtHandler))
@@ -125,7 +129,7 @@ bool chatBin::c2s_Dispatcher::Dispatch(cPacket &packet, const ProtocolHandlers &
 		}
 		break;
 
-	case 1095604361:
+	case 1095604361: // ReqLogout
 		{
 			ProtocolHandlers prtHandler;
 			if (!HandlerMatching<c2s_ProtocolHandler>(handlers, prtHandler))
@@ -141,7 +145,7 @@ bool chatBin::c2s_Dispatcher::Dispatch(cPacket &packet, const ProtocolHandlers &
 		}
 		break;
 
-	case 3009973762:
+	case 3009973762: // chat
 		{
 			ProtocolHandlers prtHandler;
 			if (!HandlerMatching<c2s_ProtocolHandler>(handlers, prtHandler))
@@ -157,7 +161,7 @@ bool chatBin::c2s_Dispatcher::Dispatch(cPacket &packet, const ProtocolHandlers &
 		}
 		break;
 
-	case 350845456:
+	case 350845456: // chatStruct
 		{
 			ProtocolHandlers prtHandler;
 			if (!HandlerMatching<c2s_ProtocolHandler>(handlers, prtHandler))
